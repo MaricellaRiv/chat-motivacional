@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat Motivacional Bíblico</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Encabezado principal -->
+    <header class="header">
+      <div class="icon">✝️</div>
+      <h1>Chat Motivacional Bíblico</h1>
+      <p class="subtitle">Cuéntame cómo te sientes y recibirás una palabra de aliento</p>
+    </header>
+
+    <!-- Tarjeta de entrada del usuario -->
+    <div class="card input-card">
+      <label for="userInput" class="input-label">¿Cómo te sientes hoy?</label>
+      <textarea
+        id="userInput"
+        placeholder="Escribe aquí cómo te sientes... por ejemplo: 'Me siento triste y sin esperanza' o 'Estoy muy ansioso por mi futuro'"
+        rows="4"
+      ></textarea>
+      <button id="submitBtn" onclick="analizarEmocion()">
+        🕊️ Recibir mensaje de ánimo
+      </button>
+    </div>
+
+    <!-- Tarjeta de resultado (oculta al inicio, aparece con animación) -->
+    <div class="card result-card hidden" id="resultCard">
+      <div class="emotion-badge" id="emotionBadge"></div>
+      <div class="verse-container">
+        <p class="verse-text" id="verseText"></p>
+        <p class="verse-ref" id="verseRef"></p>
+      </div>
+      <p class="verse-message" id="verseMessage"></p>
+      <button class="btn-secondary" onclick="limpiar()">✏️ Escribir de nuevo</button>
+    </div>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+      Hecho con fe y código 💙
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
