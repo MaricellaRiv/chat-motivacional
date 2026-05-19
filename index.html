@@ -4,50 +4,96 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chat Motivacional Bíblico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+<div class="app">
 
-  <div class="container">
+  <!-- ENCABEZADO -->
+  <header class="header">
+    <h1>💜 Chat Motivacional Bíblico</h1>
+    <p class="header-sub">Recibe una palabra de ánimo y fortaleza para tu vida 💜</p>
+  </header>
 
-    <!-- Encabezado principal -->
-    <header class="header">
-      <div class="icon">✝️</div>
-      <h1>Chat Motivacional Bíblico</h1>
-      <p class="subtitle">Cuéntame cómo te sientes y recibirás una palabra de aliento</p>
-    </header>
-
-    <!-- Tarjeta de entrada del usuario -->
-    <div class="card input-card">
-      <label for="userInput" class="input-label">¿Cómo te sientes hoy?</label>
-      <textarea
+  <!-- TARJETA DE ENTRADA -->
+  <div class="input-card">
+    <div class="input-row">
+      <input
+        type="text"
         id="userInput"
-        placeholder="Escribe aquí cómo te sientes... por ejemplo: 'Me siento triste y sin esperanza' o 'Estoy muy ansioso por mi futuro'"
-        rows="4"
-      ></textarea>
+        placeholder="Cuéntame cómo te sientes..."
+        onkeydown="if(event.key==='Enter') analizarEmocion()"
+      />
       <button id="submitBtn" onclick="analizarEmocion()">
-        🕊️ Recibir mensaje de ánimo
+        <!-- Ícono de papel avión -->
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+        Recibir mensaje de ánimo
       </button>
     </div>
+  </div>
 
-    <!-- Tarjeta de resultado (oculta al inicio, aparece con animación) -->
-    <div class="card result-card hidden" id="resultCard">
-      <div class="emotion-badge" id="emotionBadge"></div>
-      <div class="verse-container">
-        <p class="verse-text" id="verseText"></p>
-        <p class="verse-ref" id="verseRef"></p>
+  <!-- SECCIÓN DE RESULTADO (aparece debajo del input) -->
+  <div class="result-section hidden" id="resultSection">
+
+    <!-- TARJETA: Afirmación positiva -->
+    <div class="affirmation-card">
+      <div class="card-top-row">
+        <span class="card-label green-label">🌱 Nueva afirmación positiva</span>
+        <span class="card-heart green-heart">💚</span>
       </div>
-      <p class="verse-message" id="verseMessage"></p>
-      <button class="btn-secondary" onclick="limpiar()">✏️ Escribir de nuevo</button>
+      <p class="affirmation-text" id="affirmationText"></p>
     </div>
 
-    <!-- Pie de página -->
-    <footer class="footer">
-      Hecho con fe y código 💙
-    </footer>
+    <!-- TARJETA: Versículo con foto -->
+    <div class="verse-card">
+      <div class="card-top-row">
+        <span class="card-label purple-label">📖 Versículo para ti</span>
+      </div>
+      <div class="verse-body">
+
+        <!-- Foto inspiradora (cambia según la emoción) -->
+        <div class="verse-photo-wrap">
+          <img id="versePhoto" src="" alt="Imagen inspiradora" />
+        </div>
+
+        <!-- Contenido del versículo -->
+        <div class="verse-content">
+          <div class="big-quote">"</div>
+          <p class="verse-text" id="verseText"></p>
+          <div class="verse-divider"></div>
+          <p class="verse-ref" id="verseRef"></p>
+
+          <!-- Caja de mensaje espiritual -->
+          <div class="verse-msg-box">
+            <span class="msg-heart">💜</span>
+            <p class="verse-msg-text" id="verseMessage"></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- MENSAJE FINAL (pie del resultado) -->
+    <div class="result-footer">
+      <span class="footer-sparkle">✦</span>
+      <p class="footer-text">Dios te ama, confía, descansa en Él y sigue adelante.</p>
+      <span class="footer-heart">💜</span>
+    </div>
+
+    <!-- Botón para limpiar y volver -->
+    <div class="btn-back-wrap">
+      <button class="btn-back" onclick="limpiar()">✏️ Escribir de nuevo</button>
+    </div>
 
   </div>
 
-  <script src="script.js"></script>
+</div>
+<script src="script.js"></script>
 </body>
 </html>

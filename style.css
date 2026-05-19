@@ -1,274 +1,422 @@
-/* =====================================================
-   CHAT MOTIVACIONAL BÍBLICO - Estilos Globales
-   Paleta: tonos azul suave, lavanda, blanco cálido
-   ===================================================== */
+/* =============================================================
+   CHAT MOTIVACIONAL BÍBLICO — Estilo Premium Claro v3
+   Inspirado en la captura de pantalla compartida por el usuario
+   Paleta: lavanda pastel, blanco, verde suave, violeta suave
+   ============================================================= */
 
-/* Importar fuente Google suave */
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* Reset básico y box-sizing global */
+/* ---- Reset base ---- */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Fondo con degradado pastel suave */
+/* =============================================================
+   FONDO GLOBAL — degradado pastel claro (lavanda suave)
+   ============================================================= */
 body {
   min-height: 100vh;
-  background: linear-gradient(135deg, #dbeafe 0%, #ede9fe 50%, #fce7f3 100%);
-  font-family: 'Lato', sans-serif;
+  background: linear-gradient(170deg, #dde4f2 0%, #e7e2f5 45%, #ede6f8 100%);
+  font-family: 'Inter', sans-serif;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 40px 16px;
+  padding: 44px 20px 80px;
 }
 
-/* Contenedor principal centrado */
-.container {
+/* =============================================================
+   CONTENEDOR PRINCIPAL
+   ============================================================= */
+.app {
   width: 100%;
-  max-width: 640px;
+  max-width: 680px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 22px;
 }
 
-/* =====================================================
+/* =============================================================
    ENCABEZADO
-   ===================================================== */
+   ============================================================= */
 .header {
   text-align: center;
-  padding: 8px 0;
-}
-
-.header .icon {
-  font-size: 3rem;
-  margin-bottom: 12px;
-  filter: drop-shadow(0 2px 6px rgba(99, 102, 241, 0.3));
+  padding: 4px 0 8px;
 }
 
 .header h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  color: #3730a3;
-  letter-spacing: -0.5px;
-  margin-bottom: 8px;
-}
-
-.header .subtitle {
-  font-size: 1rem;
-  color: #6b7280;
-  font-weight: 300;
-  line-height: 1.5;
-}
-
-/* =====================================================
-   TARJETAS (card base compartida)
-   ===================================================== */
-.card {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
-  padding: 32px;
-  box-shadow:
-    0 4px 24px rgba(99, 102, 241, 0.08),
-    0 1px 4px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-}
-
-/* =====================================================
-   TARJETA DE ENTRADA
-   ===================================================== */
-.input-label {
-  display: block;
-  font-size: 0.95rem;
+  font-size: 2.2rem;
   font-weight: 700;
-  color: #4338ca;
-  margin-bottom: 12px;
-  letter-spacing: 0.3px;
+  color: #3b1f6e;
+  margin-bottom: 8px;
+  line-height: 1.2;
 }
 
-textarea {
-  width: 100%;
-  border: 2px solid #c7d2fe;
+.header-sub {
+  font-size: 0.95rem;
+  color: #7c6fa0;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+/* =============================================================
+   TARJETA DE ENTRADA
+   ============================================================= */
+.input-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 18px 22px;
+  box-shadow: 0 4px 24px rgba(100, 80, 160, 0.1), 0 1px 4px rgba(0,0,0,0.05);
+}
+
+/* Input + botón en la misma fila */
+.input-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+input[type="text"] {
+  flex: 1;
+  border: 1.5px solid #e4ddf5;
   border-radius: 12px;
-  padding: 14px 16px;
-  font-family: 'Lato', sans-serif;
+  padding: 14px 18px;
+  font-family: 'Inter', sans-serif;
   font-size: 1rem;
-  color: #374151;
-  background: #f8faff;
-  resize: none;
+  color: #3b1f6e;
+  background: #faf9fd;
   outline: none;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-  line-height: 1.6;
+  transition: border-color 0.25s, box-shadow 0.25s;
 }
 
-textarea:focus {
-  border-color: #6366f1;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+input[type="text"]:focus {
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.15);
   background: #fff;
 }
 
-textarea::placeholder {
-  color: #a5b4c8;
+input[type="text"]::placeholder {
+  color: #b8aad4;
   font-style: italic;
 }
 
 /* Botón principal */
 #submitBtn {
-  margin-top: 16px;
-  width: 100%;
-  padding: 14px 24px;
-  background: linear-gradient(135deg, #6366f1, #818cf8);
-  color: white;
+  flex-shrink: 0;
+  padding: 14px 22px;
+  background: #7c3aed;
+  color: #fff;
   border: none;
   border-radius: 12px;
-  font-size: 1.05rem;
-  font-weight: 700;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
   cursor: pointer;
-  letter-spacing: 0.3px;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.22s, transform 0.18s, box-shadow 0.22s;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.35);
+  white-space: nowrap;
+}
+
+.btn-icon {
+  width: 16px;
+  height: 16px;
+  stroke: #fff;
 }
 
 #submitBtn:hover {
+  background: #5b21b6;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
-  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.45);
 }
 
 #submitBtn:active {
   transform: translateY(0);
 }
 
-/* =====================================================
-   TARJETA DE RESULTADO
-   ===================================================== */
-
-/* Estado oculto — sin animación */
-.result-card.hidden {
+/* =============================================================
+   SECCIÓN DE RESULTADO
+   ============================================================= */
+.result-section.hidden {
   display: none;
 }
 
-/* Animación de entrada al mostrar el resultado */
-@keyframes fadeSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Animación suave de entrada */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.result-card {
-  animation: fadeSlideIn 0.5s ease forwards;
-  text-align: center;
+.result-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fadeSlideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* Badge que muestra la emoción detectada */
-.emotion-badge {
-  display: inline-block;
-  padding: 6px 18px;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
+/* =============================================================
+   BASE COMPARTIDA DE TARJETAS
+   ============================================================= */
+.affirmation-card,
+.verse-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 26px 28px;
+  box-shadow: 0 4px 24px rgba(100, 80, 160, 0.1), 0 1px 4px rgba(0,0,0,0.04);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Colores del badge según emoción (asignados desde JS) */
-.badge-tristeza     { background: #dbeafe; color: #1d4ed8; }
-.badge-ansiedad     { background: #fef9c3; color: #854d0e; }
-.badge-miedo        { background: #fce7f3; color: #9d174d; }
-.badge-desmotivacion{ background: #f3e8ff; color: #6b21a8; }
-.badge-agradecimiento{ background: #dcfce7; color: #15803d; }
-.badge-alegria      { background: #ffedd5; color: #c2410c; }
-.badge-general      { background: #e0e7ff; color: #3730a3; }
-
-/* Contenedor del versículo */
-.verse-container {
-  background: linear-gradient(135deg, #f0f4ff, #f5f3ff);
-  border-left: 4px solid #818cf8;
-  border-radius: 12px;
-  padding: 20px 24px;
+/* Fila superior: etiqueta + corazón */
+.card-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 18px;
-  text-align: left;
+}
+
+/* Etiqueta pequeña en mayúsculas */
+.card-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.green-label  { color: #16a34a; }
+.purple-label { color: #6d28d9; }
+
+.card-heart { font-size: 1.1rem; }
+.green-heart  { color: #16a34a; }
+
+/* =============================================================
+   TARJETA DE AFIRMACIÓN POSITIVA
+   ============================================================= */
+.affirmation-card {
+  border-left: 5px solid #4ade80; /* verde suave */
+}
+
+.affirmation-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.45rem;
+  font-weight: 400;
+  font-style: italic;
+  color: #15803d;  /* verde oscuro elegante */
+  line-height: 1.8;
+}
+
+/* =============================================================
+   TARJETA DEL VERSÍCULO CON FOTO
+   ============================================================= */
+.verse-card {
+  border-left: 5px solid #a78bfa; /* lavanda */
+  padding-bottom: 28px;
+}
+
+/* Layout horizontal: foto izquierda + texto derecha */
+.verse-body {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+/* Contenedor de la foto */
+.verse-photo-wrap {
+  flex: 0 0 46%;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(135deg, #c4b5fd, #818cf8); /* fallback si la imagen falla */
+}
+
+.verse-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 14px;
+}
+
+/* Contenido derecho del versículo */
+.verse-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+/* Comilla decorativa grande */
+.big-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  color: #a78bfa;
+  line-height: 1;
+  font-weight: 700;
+  margin-bottom: -6px;
 }
 
 /* Texto del versículo */
 .verse-text {
   font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
   font-style: italic;
-  font-size: 1.15rem;
-  color: #312e81;
-  line-height: 1.75;
-  margin-bottom: 10px;
+  color: #3b1f6e;
+  line-height: 1.8;
+}
+
+/* Línea divisora */
+.verse-divider {
+  width: 48px;
+  height: 2px;
+  background: #a78bfa;
+  border-radius: 2px;
+  margin: 2px 0;
 }
 
 /* Referencia bíblica */
 .verse-ref {
   font-size: 0.9rem;
-  font-weight: 700;
-  color: #6366f1;
-  letter-spacing: 0.3px;
+  font-weight: 600;
+  color: #7c3aed;
+  letter-spacing: 0.2px;
 }
 
-/* Mensaje de acompañamiento */
-.verse-message {
-  font-size: 0.95rem;
-  color: #6b7280;
-  line-height: 1.6;
-  font-weight: 300;
-  margin-bottom: 20px;
-}
-
-/* Botón secundario "Escribir de nuevo" */
-.btn-secondary {
-  padding: 10px 28px;
-  background: transparent;
-  color: #6366f1;
-  border: 2px solid #c7d2fe;
+/* Caja del mensaje espiritual */
+.verse-msg-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: #f5f3ff;
   border-radius: 10px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  font-family: 'Lato', sans-serif;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  padding: 10px 14px;
+  margin-top: 4px;
 }
 
-.btn-secondary:hover {
-  background: #eef2ff;
-  border-color: #6366f1;
+.msg-heart {
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  margin-top: 1px;
 }
 
-/* =====================================================
-   PIE DE PÁGINA
-   ===================================================== */
-.footer {
+.verse-msg-text {
+  font-size: 0.82rem;
+  color: #6d5fa0;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* =============================================================
+   PIE DEL RESULTADO (mensaje final + corazón)
+   ============================================================= */
+.result-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 8px;
+  gap: 12px;
+}
+
+.footer-sparkle {
+  font-size: 1.1rem;
+  color: #f59e0b;
+  flex-shrink: 0;
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  color: #6b7280;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.5;
   text-align: center;
-  font-size: 0.85rem;
-  color: #9ca3af;
-  padding-bottom: 16px;
-  font-weight: 300;
+  flex: 1;
 }
 
-/* =====================================================
+.footer-heart {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* =============================================================
+   BOTÓN VOLVER
+   ============================================================= */
+.btn-back-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-back {
+  padding: 11px 32px;
+  background: transparent;
+  color: #7c3aed;
+  border: 1.5px solid #c4b5fd;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.22s, border-color 0.22s, transform 0.18s;
+}
+
+.btn-back:hover {
+  background: #f5f3ff;
+  border-color: #7c3aed;
+  transform: translateY(-1px);
+}
+
+/* =============================================================
    RESPONSIVE — pantallas pequeñas
-   ===================================================== */
-@media (max-width: 480px) {
-  .header h1 {
-    font-size: 1.5rem;
+   ============================================================= */
+@media (max-width: 560px) {
+  body {
+    padding: 32px 14px 60px;
   }
 
-  .card {
-    padding: 24px 20px;
+  .header h1 {
+    font-size: 1.7rem;
+  }
+
+  /* En móvil el input y el botón se apilan */
+  .input-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #submitBtn {
+    justify-content: center;
+  }
+
+  /* El verse-body se apila verticalmente */
+  .verse-body {
+    flex-direction: column;
+  }
+
+  .verse-photo-wrap {
+    flex: none;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+
+  .affirmation-text {
+    font-size: 1.2rem;
   }
 
   .verse-text {
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .header h1 {
+    font-size: 1.45rem;
   }
 }
