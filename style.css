@@ -31,10 +31,10 @@ body {
    ============================================================= */
 .app {
   width: 100%;
-  max-width: 680px;
+  max-width: 960px; /* más ancho para que las dos tarjetas quepan lado a lado */
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 20px;
 }
 
 /* =============================================================
@@ -71,35 +71,45 @@ body {
   box-shadow: 0 4px 24px rgba(100, 80, 160, 0.1), 0 1px 4px rgba(0,0,0,0.05);
 }
 
-/* Input + botón en la misma fila */
-.input-row {
-  display: flex;
-  gap: 12px;
-  align-items: center;
+/* El input desaparece mientras se muestra el resultado */
+.input-card.hidden {
+  display: none;
 }
 
-input[type="text"] {
-  flex: 1;
+/* Textarea de escritura libre — mínimo 120px, crece con el contenido */
+textarea#userInput {
+  width: 100%;
+  min-height: 120px;
   border: 1.5px solid #e4ddf5;
-  border-radius: 12px;
-  padding: 14px 18px;
+  border-radius: 14px;
+  padding: 16px 18px;
   font-family: 'Inter', sans-serif;
   font-size: 1rem;
   color: #3b1f6e;
   background: #faf9fd;
   outline: none;
-  transition: border-color 0.25s, box-shadow 0.25s;
+  resize: vertical;
+  line-height: 1.7;
+  display: block;
+  margin-bottom: 14px;
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
 }
 
-input[type="text"]:focus {
+textarea#userInput:focus {
   border-color: #a78bfa;
   box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.15);
   background: #fff;
 }
 
-input[type="text"]::placeholder {
+textarea#userInput::placeholder {
   color: #b8aad4;
   font-style: italic;
+}
+
+/* Fila inferior: botón alineado a la derecha */
+.input-btn-row {
+  display: flex;
+  justify-content: flex-end;
 }
 
 /* Botón principal */
@@ -154,8 +164,19 @@ input[type="text"]::placeholder {
 .result-section {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
   animation: fadeSlideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* =====================================================
+   CUADRÍCULA DE DOS COLUMNAS
+   Afirmación (izq.) y Versículo (der.) lado a lado
+   ===================================================== */
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  align-items: start; /* cada tarjeta tiene su altura natural */
 }
 
 /* =============================================================
@@ -165,10 +186,9 @@ input[type="text"]::placeholder {
 .verse-card {
   background: #ffffff;
   border-radius: 18px;
-  padding: 26px 28px;
+  padding: 22px 24px;
   box-shadow: 0 4px 24px rgba(100, 80, 160, 0.1), 0 1px 4px rgba(0,0,0,0.04);
   position: relative;
-  overflow: hidden;
 }
 
 /* Fila superior: etiqueta + corazón */
@@ -176,7 +196,7 @@ input[type="text"]::placeholder {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 /* Etiqueta pequeña en mayúsculas */
@@ -205,36 +225,35 @@ input[type="text"]::placeholder {
 
 .affirmation-text {
   font-family: 'Playfair Display', serif;
-  font-size: 1.45rem;
+  font-size: 1.2rem;
   font-weight: 400;
   font-style: italic;
-  color: #15803d;  /* verde oscuro elegante */
-  line-height: 1.8;
+  color: #15803d;
+  line-height: 1.75;
 }
 
 /* =============================================================
    TARJETA DEL VERSÍCULO CON FOTO
    ============================================================= */
 .verse-card {
-  border-left: 5px solid #a78bfa; /* lavanda */
-  padding-bottom: 28px;
+  border-left: 5px solid #a78bfa;
 }
 
-/* Layout horizontal: foto izquierda + texto derecha */
+/* Foto arriba, texto abajo (dentro de cada columna del grid) */
 .verse-body {
   display: flex;
-  gap: 24px;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 14px;
 }
 
-/* Contenedor de la foto */
+/* Contenedor de la foto — ocupa todo el ancho de la columna */
 .verse-photo-wrap {
-  flex: 0 0 46%;
-  border-radius: 14px;
+  width: 100%;
+  border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-  aspect-ratio: 4 / 3;
-  background: linear-gradient(135deg, #c4b5fd, #818cf8); /* fallback si la imagen falla */
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, #c4b5fd, #818cf8);
 }
 
 .verse-photo-wrap img {
@@ -245,32 +264,30 @@ input[type="text"]::placeholder {
   border-radius: 14px;
 }
 
-/* Contenido derecho del versículo */
+/* Contenido del versículo (debajo de la foto) */
 .verse-content {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding-top: 4px;
+  gap: 8px;
 }
 
-/* Comilla decorativa grande */
+/* Comilla decorativa */
 .big-quote {
   font-family: 'Playfair Display', serif;
-  font-size: 3.5rem;
+  font-size: 2.8rem;
   color: #a78bfa;
   line-height: 1;
   font-weight: 700;
-  margin-bottom: -6px;
+  margin-bottom: -4px;
 }
 
 /* Texto del versículo */
 .verse-text {
   font-family: 'Playfair Display', serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-style: italic;
   color: #3b1f6e;
-  line-height: 1.8;
+  line-height: 1.75;
 }
 
 /* Línea divisora */
@@ -376,47 +393,57 @@ input[type="text"]::placeholder {
 /* =============================================================
    RESPONSIVE — pantallas pequeñas
    ============================================================= */
+/* ---- Tablet y desktop pequeño: cuadrícula pasa a 1 columna ---- */
+@media (max-width: 700px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Móvil ---- */
 @media (max-width: 560px) {
   body {
-    padding: 32px 14px 60px;
+    padding: 28px 14px 60px;
   }
 
   .header h1 {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
   }
 
-  /* En móvil el input y el botón se apilan */
-  .input-row {
-    flex-direction: column;
-    align-items: stretch;
+  .header-sub {
+    font-size: 0.85rem;
+  }
+
+  textarea#userInput {
+    min-height: 110px;
+    font-size: 0.97rem;
+  }
+
+  .input-btn-row {
+    justify-content: stretch;
   }
 
   #submitBtn {
+    width: 100%;
     justify-content: center;
   }
 
-  /* El verse-body se apila verticalmente */
-  .verse-body {
-    flex-direction: column;
-  }
-
-  .verse-photo-wrap {
-    flex: none;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-  }
-
   .affirmation-text {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
-  .verse-text {
-    font-size: 1rem;
+  .affirmation-card,
+  .verse-card {
+    padding: 18px 18px;
   }
 }
 
 @media (max-width: 380px) {
   .header h1 {
-    font-size: 1.45rem;
+    font-size: 1.4rem;
+  }
+
+  textarea#userInput {
+    min-height: 100px;
   }
 }

@@ -165,6 +165,9 @@ function analizarEmocion() {
 
   // Mostrar resultado
   mostrarResultado(emocion, versiculo);
+
+  // Limpiar el textarea: el mensaje original no queda visible
+  input.value = "";
 }
 
 
@@ -228,30 +231,39 @@ function mostrarResultado(emocion, versiculo) {
   // Mensaje espiritual
   document.getElementById("verseMessage").textContent = emocion.mensaje;
 
-  // Mostrar sección de resultado
-  const resultSection = document.getElementById("resultSection");
-  resultSection.classList.remove("hidden");
+  // Ocultar el input para que no ocupe espacio mientras se ve el resultado
+  document.getElementById("inputCard").classList.add("hidden");
 
-  // Scroll suave hacia los resultados
-  setTimeout(() => {
-    resultSection.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, 80);
+  // Mostrar sección de resultado
+  document.getElementById("resultSection").classList.remove("hidden");
+
+  // Volver al inicio: header + resultado quedan visibles sin scroll
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 
 // -------------------------------------------------------
 // 6. FUNCIÓN: limpiar()
-//    Limpia el input y oculta la sección de resultado.
+//    Oculta el resultado, limpia el textarea y devuelve
+//    el foco al área de escritura para un nuevo mensaje.
 // -------------------------------------------------------
 function limpiar() {
-  document.getElementById("userInput").value = "";
+  // Ocultar resultado y mostrar de nuevo el input
   document.getElementById("resultSection").classList.add("hidden");
+  document.getElementById("inputCard").classList.remove("hidden");
 
-  // Restaurar imagen para la próxima vez
+  // Limpiar el textarea
+  document.getElementById("userInput").value = "";
+
+  // Restaurar la imagen para la próxima respuesta
   const img = document.getElementById("versePhoto");
   img.style.display = "block";
+  img.onerror = null;
   img.src = "";
 
-  document.getElementById("userInput").focus();
+  // Scroll al inicio y foco en el textarea
   window.scrollTo({ top: 0, behavior: "smooth" });
+  setTimeout(() => {
+    document.getElementById("userInput").focus();
+  }, 300);
 }

@@ -18,17 +18,15 @@
     <p class="header-sub">Recibe una palabra de ánimo y fortaleza para tu vida 💜</p>
   </header>
 
-  <!-- TARJETA DE ENTRADA -->
-  <div class="input-card">
-    <div class="input-row">
-      <input
-        type="text"
-        id="userInput"
-        placeholder="Cuéntame cómo te sientes..."
-        onkeydown="if(event.key==='Enter') analizarEmocion()"
-      />
+  <!-- TARJETA DE ENTRADA — se oculta al mostrar el resultado -->
+  <div class="input-card" id="inputCard">
+    <textarea
+      id="userInput"
+      placeholder="Cuéntame cómo te sientes..."
+      rows="4"
+    ></textarea>
+    <div class="input-btn-row">
       <button id="submitBtn" onclick="analizarEmocion()">
-        <!-- Ícono de papel avión -->
         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="22" y1="2" x2="11" y2="13"></line>
           <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
@@ -38,57 +36,55 @@
     </div>
   </div>
 
-  <!-- SECCIÓN DE RESULTADO (aparece debajo del input) -->
+  <!-- SECCIÓN DE RESULTADO -->
   <div class="result-section hidden" id="resultSection">
 
-    <!-- TARJETA: Afirmación positiva -->
-    <div class="affirmation-card">
-      <div class="card-top-row">
-        <span class="card-label green-label">🌱 Nueva afirmación positiva</span>
-        <span class="card-heart green-heart">💚</span>
-      </div>
-      <p class="affirmation-text" id="affirmationText"></p>
-    </div>
+    <!-- Las dos tarjetas en cuadrícula: lado a lado en desktop, apiladas en móvil -->
+    <div class="cards-grid">
 
-    <!-- TARJETA: Versículo con foto -->
-    <div class="verse-card">
-      <div class="card-top-row">
-        <span class="card-label purple-label">📖 Versículo para ti</span>
-      </div>
-      <div class="verse-body">
-
-        <!-- Foto inspiradora (cambia según la emoción) -->
-        <div class="verse-photo-wrap">
-          <img id="versePhoto" src="" alt="Imagen inspiradora" />
+      <!-- Tarjeta izquierda: Afirmación positiva -->
+      <div class="affirmation-card">
+        <div class="card-top-row">
+          <span class="card-label green-label">🌱 Nueva afirmación positiva</span>
+          <span class="card-heart green-heart">💚</span>
         </div>
+        <p class="affirmation-text" id="affirmationText"></p>
+      </div>
 
-        <!-- Contenido del versículo -->
-        <div class="verse-content">
-          <div class="big-quote">"</div>
-          <p class="verse-text" id="verseText"></p>
-          <div class="verse-divider"></div>
-          <p class="verse-ref" id="verseRef"></p>
-
-          <!-- Caja de mensaje espiritual -->
-          <div class="verse-msg-box">
-            <span class="msg-heart">💜</span>
-            <p class="verse-msg-text" id="verseMessage"></p>
+      <!-- Tarjeta derecha: Versículo con foto -->
+      <div class="verse-card">
+        <div class="card-top-row">
+          <span class="card-label purple-label">📖 Versículo para ti</span>
+        </div>
+        <div class="verse-body">
+          <div class="verse-photo-wrap">
+            <img id="versePhoto" src="" alt="Imagen inspiradora" />
+          </div>
+          <div class="verse-content">
+            <div class="big-quote">"</div>
+            <p class="verse-text" id="verseText"></p>
+            <div class="verse-divider"></div>
+            <p class="verse-ref" id="verseRef"></p>
+            <div class="verse-msg-box">
+              <span class="msg-heart">💜</span>
+              <p class="verse-msg-text" id="verseMessage"></p>
+            </div>
           </div>
         </div>
-
       </div>
+
     </div>
 
-    <!-- MENSAJE FINAL (pie del resultado) -->
+    <!-- Mensaje final debajo de las dos tarjetas -->
     <div class="result-footer">
       <span class="footer-sparkle">✦</span>
       <p class="footer-text">Dios te ama, confía, descansa en Él y sigue adelante.</p>
       <span class="footer-heart">💜</span>
     </div>
 
-    <!-- Botón para limpiar y volver -->
+    <!-- Botón para recibir un nuevo mensaje -->
     <div class="btn-back-wrap">
-      <button class="btn-back" onclick="limpiar()">✏️ Escribir de nuevo</button>
+      <button class="btn-back" onclick="limpiar()">✏️ Recibir nuevo mensaje</button>
     </div>
 
   </div>
