@@ -3,93 +3,90 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chat Motivacional Bíblico</title>
+  <title>Alma Serena | Chat de Bienestar</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<div class="app">
-
-  <!-- ENCABEZADO -->
-  <header class="header">
-    <h1>💜 Chat Motivacional Bíblico</h1>
-    <p class="header-sub">Recibe una palabra de ánimo y fortaleza para tu vida 💜</p>
-  </header>
-
-  <!-- TARJETA DE ENTRADA — se oculta al mostrar el resultado -->
-  <div class="input-card" id="inputCard">
-    <textarea
-      id="userInput"
-      placeholder="Cuéntame cómo te sientes..."
-      rows="4"
-    ></textarea>
-    <div class="input-btn-row">
-      <button id="submitBtn" onclick="analizarEmocion()">
-        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="22" y1="2" x2="11" y2="13"></line>
-          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-        </svg>
-        Recibir mensaje de ánimo
-      </button>
-    </div>
-  </div>
-
-  <!-- SECCIÓN DE RESULTADO -->
-  <div class="result-section hidden" id="resultSection">
-
-    <!-- Las dos tarjetas en cuadrícula: lado a lado en desktop, apiladas en móvil -->
-    <div class="cards-grid">
-
-      <!-- Tarjeta izquierda: Afirmación positiva -->
-      <div class="affirmation-card">
-        <div class="card-top-row">
-          <span class="card-label green-label">🌱 Nueva afirmación positiva</span>
-          <span class="card-heart green-heart">💚</span>
-        </div>
-        <p class="affirmation-text" id="affirmationText"></p>
+  <main class="app" aria-label="Chat motivacional de bienestar emocional">
+    <section class="hero">
+      <div class="brand-row" aria-label="Alma Serena">
+        <span class="brand-mark">AS</span>
+        <span class="brand-name">Alma Serena</span>
       </div>
 
-      <!-- Tarjeta derecha: Versículo con foto -->
-      <div class="verse-card">
-        <div class="card-top-row">
-          <span class="card-label purple-label">📖 Versículo para ti</span>
-        </div>
-        <div class="verse-body">
+      <div class="hero-copy">
+        <p class="eyebrow">Bienestar emocional con inspiración bíblica</p>
+        <h1>Un espacio de calma para lo que sientes hoy.</h1>
+        <p class="header-sub">Escribe con libertad y recibe una afirmación, un versículo y una palabra de ánimo para respirar más profundo.</p>
+      </div>
+    </section>
+
+    <section class="input-card" id="inputCard" aria-label="Entrada emocional">
+      <label class="input-label" for="userInput">¿Cómo está tu corazón?</label>
+      <textarea
+        id="userInput"
+        placeholder="Cuéntame cómo te sientes..."
+        rows="5"
+      ></textarea>
+      <div class="input-actions">
+        <p class="privacy-note">Tu mensaje solo se usa para elegir una palabra de ánimo en esta sesión.</p>
+        <button id="submitBtn" onclick="analizarEmocion()">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m22 2-7 20-4-9-9-4Z"></path>
+            <path d="M22 2 11 13"></path>
+          </svg>
+          Recibir ánimo
+        </button>
+      </div>
+    </section>
+
+    <section class="result-section hidden" id="resultSection" aria-label="Resultado de ánimo">
+      <div class="cards-grid">
+        <article class="affirmation-card">
+          <div class="card-top-row">
+            <span class="card-label green-label">Afirmación positiva</span>
+            <span class="card-icon" aria-hidden="true">✦</span>
+          </div>
+          <p class="affirmation-text" id="affirmationText"></p>
+        </article>
+
+        <article class="verse-card">
           <div class="verse-photo-wrap">
             <img id="versePhoto" src="" alt="Imagen inspiradora" />
           </div>
           <div class="verse-content">
-            <div class="big-quote">"</div>
+            <span class="card-label purple-label">Versículo para ti</span>
+            <div class="quote-mark" aria-hidden="true">“</div>
             <p class="verse-text" id="verseText"></p>
             <div class="verse-divider"></div>
             <p class="verse-ref" id="verseRef"></p>
             <div class="verse-msg-box">
-              <span class="msg-heart">💜</span>
+              <span class="msg-dot" aria-hidden="true"></span>
               <p class="verse-msg-text" id="verseMessage"></p>
             </div>
           </div>
-        </div>
+        </article>
       </div>
 
-    </div>
+      <div class="result-footer">
+        <span class="footer-sparkle" aria-hidden="true">✦</span>
+        <p class="footer-text">Dios te ama. Respira, descansa en Él y sigue caminando con esperanza.</p>
+      </div>
 
-    <!-- Mensaje final debajo de las dos tarjetas -->
-    <div class="result-footer">
-      <span class="footer-sparkle">✦</span>
-      <p class="footer-text">Dios te ama, confía, descansa en Él y sigue adelante.</p>
-      <span class="footer-heart">💜</span>
-    </div>
-
-    <!-- Botón para recibir un nuevo mensaje -->
-    <div class="btn-back-wrap">
-      <button class="btn-back" onclick="limpiar()">✏️ Recibir nuevo mensaje</button>
-    </div>
-
-  </div>
-
-</div>
-<script src="script.js"></script>
+      <div class="btn-back-wrap">
+        <button class="btn-back" onclick="limpiar()">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 12a9 9 0 1 0 3-6.7"></path>
+            <path d="M3 4v5h5"></path>
+          </svg>
+          Nuevo mensaje
+        </button>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
 </body>
 </html>

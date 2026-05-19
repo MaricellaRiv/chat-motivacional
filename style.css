@@ -1,449 +1,530 @@
-/* =============================================================
-   CHAT MOTIVACIONAL BÍBLICO — Estilo Premium Claro v3
-   Inspirado en la captura de pantalla compartida por el usuario
-   Paleta: lavanda pastel, blanco, verde suave, violeta suave
-   ============================================================= */
+:root {
+  color-scheme: light;
+  --ink: #17211d;
+  --muted: #6f7972;
+  --soft: #f6f2ec;
+  --surface: rgba(255, 255, 255, 0.86);
+  --surface-solid: #fffdf9;
+  --line: rgba(43, 58, 50, 0.12);
+  --sage: #6f8f7a;
+  --sage-deep: #2f644c;
+  --mauve: #8e6f87;
+  --clay: #b57963;
+  --gold: #c39150;
+  --shadow: 0 26px 70px rgba(42, 52, 45, 0.14);
+  --shadow-soft: 0 16px 38px rgba(42, 52, 45, 0.1);
+}
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap');
-
-/* ---- Reset base ---- */
 *, *::before, *::after {
   box-sizing: border-box;
+}
+
+* {
   margin: 0;
   padding: 0;
 }
 
-/* =============================================================
-   FONDO GLOBAL — degradado pastel claro (lavanda suave)
-   ============================================================= */
+html {
+  min-height: 100%;
+}
+
 body {
   min-height: 100vh;
-  background: linear-gradient(170deg, #dde4f2 0%, #e7e2f5 45%, #ede6f8 100%);
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.92) 0 12%, transparent 28%),
+    linear-gradient(135deg, #eef4ec 0%, #f7efe9 42%, #eee9f2 100%);
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding: 44px 20px 80px;
+  padding: 38px 20px 72px;
 }
 
-/* =============================================================
-   CONTENEDOR PRINCIPAL
-   ============================================================= */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(47, 100, 76, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47, 100, 76, 0.04) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), transparent 72%);
+}
+
+button,
+textarea {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .app {
-  width: 100%;
-  max-width: 960px; /* más ancho para que las dos tarjetas quepan lado a lado */
+  width: min(100%, 1080px);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 22px;
+  position: relative;
+  z-index: 1;
 }
 
-/* =============================================================
-   ENCABEZADO
-   ============================================================= */
-.header {
-  text-align: center;
-  padding: 4px 0 8px;
+.hero {
+  min-height: 268px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 8px;
+  background:
+    linear-gradient(115deg, rgba(18, 31, 26, 0.75), rgba(36, 63, 50, 0.34)),
+    url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80") center 58% / cover;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fffdf7;
 }
 
-.header h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.2rem;
+.brand-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;
+}
+
+.brand-mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #20382d;
+  background: rgba(255, 253, 249, 0.9);
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+}
+
+.brand-name {
   font-weight: 700;
-  color: #3b1f6e;
-  margin-bottom: 8px;
-  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.hero-copy {
+  max-width: 720px;
+}
+
+.eyebrow,
+.card-label {
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  color: rgba(255, 253, 247, 0.78);
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(2.55rem, 6vw, 5.8rem);
+  font-weight: 600;
+  line-height: 0.92;
+  max-width: 790px;
 }
 
 .header-sub {
-  font-size: 0.95rem;
-  color: #7c6fa0;
-  font-weight: 400;
-  letter-spacing: 0.2px;
+  max-width: 600px;
+  margin-top: 18px;
+  color: rgba(255, 253, 247, 0.86);
+  font-size: 1rem;
+  line-height: 1.75;
 }
 
-/* =============================================================
-   TARJETA DE ENTRADA
-   ============================================================= */
+.input-card,
+.affirmation-card,
+.verse-card,
+.result-footer {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(18px);
+}
+
 .input-card {
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 18px 22px;
-  box-shadow: 0 4px 24px rgba(100, 80, 160, 0.1), 0 1px 4px rgba(0,0,0,0.05);
+  padding: 24px;
 }
 
-/* El input desaparece mientras se muestra el resultado */
-.input-card.hidden {
-  display: none;
+.hidden {
+  display: none !important;
 }
 
-/* Textarea de escritura libre — mínimo 120px, crece con el contenido */
+.input-label {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--sage-deep);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
 textarea#userInput {
   width: 100%;
-  min-height: 120px;
-  border: 1.5px solid #e4ddf5;
-  border-radius: 14px;
-  padding: 16px 18px;
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  color: #3b1f6e;
-  background: #faf9fd;
+  min-height: 156px;
+  border: 1px solid rgba(47, 100, 76, 0.18);
+  border-radius: 8px;
+  padding: 18px 20px;
+  color: var(--ink);
+  background: rgba(255, 253, 249, 0.82);
   outline: none;
   resize: vertical;
-  line-height: 1.7;
+  line-height: 1.75;
   display: block;
-  margin-bottom: 14px;
-  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+  transition: border-color 0.24s ease, box-shadow 0.24s ease, background 0.24s ease;
 }
 
 textarea#userInput:focus {
-  border-color: #a78bfa;
-  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.15);
-  background: #fff;
+  border-color: rgba(47, 100, 76, 0.48);
+  box-shadow: 0 0 0 4px rgba(111, 143, 122, 0.15);
+  background: #fffefa;
+}
+
+textarea#userInput.input-error {
+  border-color: rgba(181, 91, 78, 0.72);
+  box-shadow: 0 0 0 4px rgba(181, 91, 78, 0.12);
 }
 
 textarea#userInput::placeholder {
-  color: #b8aad4;
-  font-style: italic;
+  color: #9aa69d;
 }
 
-/* Fila inferior: botón alineado a la derecha */
-.input-btn-row {
+.input-actions {
   display: flex;
-  justify-content: flex-end;
-}
-
-/* Botón principal */
-#submitBtn {
-  flex-shrink: 0;
-  padding: 14px 22px;
-  background: #7c3aed;
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 8px;
-  transition: background 0.22s, transform 0.18s, box-shadow 0.22s;
-  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.35);
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.privacy-note {
+  max-width: 420px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+#submitBtn,
+.btn-back {
+  min-height: 48px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-weight: 700;
+  transition: transform 0.18s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease;
   white-space: nowrap;
 }
 
+#submitBtn {
+  padding: 0 22px;
+  color: #fffdf9;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, var(--sage-deep), #7f5f78);
+  box-shadow: 0 16px 30px rgba(47, 100, 76, 0.22);
+}
+
 .btn-icon {
-  width: 16px;
-  height: 16px;
-  stroke: #fff;
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+}
+
+#submitBtn:hover,
+.btn-back:hover {
+  transform: translateY(-2px);
 }
 
 #submitBtn:hover {
-  background: #5b21b6;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.45);
+  box-shadow: 0 20px 38px rgba(47, 100, 76, 0.27);
 }
 
-#submitBtn:active {
+#submitBtn:active,
+.btn-back:active {
   transform: translateY(0);
 }
 
-/* =============================================================
-   SECCIÓN DE RESULTADO
-   ============================================================= */
-.result-section.hidden {
-  display: none;
-}
-
-/* Animación suave de entrada */
 @keyframes fadeSlideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .result-section {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  animation: fadeSlideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  gap: 18px;
+  animation: fadeSlideUp 0.48s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-/* =====================================================
-   CUADRÍCULA DE DOS COLUMNAS
-   Afirmación (izq.) y Versículo (der.) lado a lado
-   ===================================================== */
 .cards-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
   gap: 18px;
-  align-items: start; /* cada tarjeta tiene su altura natural */
+  align-items: stretch;
 }
 
-/* =============================================================
-   BASE COMPARTIDA DE TARJETAS
-   ============================================================= */
-.affirmation-card,
-.verse-card {
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 22px 24px;
-  box-shadow: 0 4px 24px rgba(100, 80, 160, 0.1), 0 1px 4px rgba(0,0,0,0.04);
-  position: relative;
+.affirmation-card {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 360px;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 249, 0.94), rgba(244, 249, 240, 0.9)),
+    var(--surface-solid);
 }
 
-/* Fila superior: etiqueta + corazón */
 .card-top-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 14px;
+  gap: 14px;
+  margin-bottom: 28px;
 }
 
-/* Etiqueta pequeña en mayúsculas */
-.card-label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 1.1px;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.green-label {
+  color: var(--sage-deep);
 }
 
-.green-label  { color: #16a34a; }
-.purple-label { color: #6d28d9; }
+.purple-label {
+  color: var(--mauve);
+}
 
-.card-heart { font-size: 1.1rem; }
-.green-heart  { color: #16a34a; }
-
-/* =============================================================
-   TARJETA DE AFIRMACIÓN POSITIVA
-   ============================================================= */
-.affirmation-card {
-  border-left: 5px solid #4ade80; /* verde suave */
+.card-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  background: rgba(195, 145, 80, 0.12);
 }
 
 .affirmation-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
-  font-weight: 400;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.55rem, 3vw, 2.25rem);
   font-style: italic;
-  color: #15803d;
-  line-height: 1.75;
+  color: #294f3e;
+  line-height: 1.18;
 }
 
-/* =============================================================
-   TARJETA DEL VERSÍCULO CON FOTO
-   ============================================================= */
 .verse-card {
-  border-left: 5px solid #a78bfa;
-}
-
-/* Foto arriba, texto abajo (dentro de cada columna del grid) */
-.verse-body {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-/* Contenedor de la foto — ocupa todo el ancho de la columna */
-.verse-photo-wrap {
-  width: 100%;
-  border-radius: 12px;
+  padding: 0;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-  aspect-ratio: 16 / 9;
-  background: linear-gradient(135deg, #c4b5fd, #818cf8);
+  display: grid;
+  grid-template-columns: minmax(220px, 0.92fr) minmax(0, 1.08fr);
+  background: var(--surface-solid);
+}
+
+.verse-photo-wrap {
+  min-height: 100%;
+  background: linear-gradient(135deg, #c9d7c6, #ded0da);
 }
 
 .verse-photo-wrap img {
   width: 100%;
   height: 100%;
+  min-height: 360px;
   object-fit: cover;
   display: block;
-  border-radius: 14px;
 }
 
-/* Contenido del versículo (debajo de la foto) */
 .verse-content {
+  padding: 28px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-}
-
-/* Comilla decorativa */
-.big-quote {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.8rem;
-  color: #a78bfa;
-  line-height: 1;
-  font-weight: 700;
-  margin-bottom: -4px;
-}
-
-/* Texto del versículo */
-.verse-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-  font-style: italic;
-  color: #3b1f6e;
-  line-height: 1.75;
-}
-
-/* Línea divisora */
-.verse-divider {
-  width: 48px;
-  height: 2px;
-  background: #a78bfa;
-  border-radius: 2px;
-  margin: 2px 0;
-}
-
-/* Referencia bíblica */
-.verse-ref {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #7c3aed;
-  letter-spacing: 0.2px;
-}
-
-/* Caja del mensaje espiritual */
-.verse-msg-box {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  background: #f5f3ff;
-  border-radius: 10px;
-  padding: 10px 14px;
-  margin-top: 4px;
-}
-
-.msg-heart {
-  font-size: 0.9rem;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-
-.verse-msg-text {
-  font-size: 0.82rem;
-  color: #6d5fa0;
-  line-height: 1.6;
-  font-weight: 400;
-}
-
-/* =============================================================
-   PIE DEL RESULTADO (mensaje final + corazón)
-   ============================================================= */
-.result-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2px 8px;
+  justify-content: center;
   gap: 12px;
 }
 
+.quote-mark {
+  height: 44px;
+  color: rgba(142, 111, 135, 0.42);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 5rem;
+  font-weight: 600;
+  line-height: 0.9;
+}
+
+.verse-text {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.28rem, 2vw, 1.68rem);
+  font-style: italic;
+  color: #2a332e;
+  line-height: 1.34;
+}
+
+.verse-divider {
+  width: 54px;
+  height: 2px;
+  margin: 4px 0;
+  background: linear-gradient(90deg, var(--sage), var(--gold));
+}
+
+.verse-ref {
+  color: var(--sage-deep);
+  font-size: 0.95rem;
+  font-weight: 800;
+}
+
+.verse-msg-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 8px;
+  padding: 14px 16px;
+  border: 1px solid rgba(111, 143, 122, 0.16);
+  border-radius: 8px;
+  background: #f4f7f1;
+}
+
+.msg-dot {
+  width: 8px;
+  height: 8px;
+  margin-top: 8px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  background: var(--gold);
+}
+
+.verse-msg-text {
+  color: #657168;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.result-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: rgba(255, 253, 249, 0.72);
+}
+
 .footer-sparkle {
-  font-size: 1.1rem;
-  color: #f59e0b;
-  flex-shrink: 0;
+  color: var(--gold);
 }
 
 .footer-text {
-  font-size: 0.9rem;
-  color: #6b7280;
-  font-style: italic;
-  font-weight: 400;
-  line-height: 1.5;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
   text-align: center;
-  flex: 1;
 }
 
-.footer-heart {
-  font-size: 1rem;
-  flex-shrink: 0;
-}
-
-/* =============================================================
-   BOTÓN VOLVER
-   ============================================================= */
 .btn-back-wrap {
   display: flex;
   justify-content: center;
 }
 
 .btn-back {
-  padding: 11px 32px;
-  background: transparent;
-  color: #7c3aed;
-  border: 1.5px solid #c4b5fd;
-  border-radius: 12px;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.22s, border-color 0.22s, transform 0.18s;
+  padding: 0 22px;
+  color: var(--sage-deep);
+  border: 1px solid rgba(47, 100, 76, 0.22);
+  background: rgba(255, 253, 249, 0.72);
 }
 
 .btn-back:hover {
-  background: #f5f3ff;
-  border-color: #7c3aed;
-  transform: translateY(-1px);
+  border-color: rgba(47, 100, 76, 0.44);
+  background: #fffdf9;
+  box-shadow: 0 14px 28px rgba(47, 100, 76, 0.12);
 }
 
-/* =============================================================
-   RESPONSIVE — pantallas pequeñas
-   ============================================================= */
-/* ---- Tablet y desktop pequeño: cuadrícula pasa a 1 columna ---- */
-@media (max-width: 700px) {
-  .cards-grid {
+@media (max-width: 880px) {
+  .cards-grid,
+  .verse-card {
     grid-template-columns: 1fr;
   }
-}
 
-/* ---- Móvil ---- */
-@media (max-width: 560px) {
-  body {
-    padding: 28px 14px 60px;
+  .affirmation-card {
+    min-height: 260px;
   }
 
-  .header h1 {
-    font-size: 1.6rem;
+  .verse-photo-wrap img {
+    min-height: 260px;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 18px 12px 52px;
+  }
+
+  .app {
+    gap: 14px;
+  }
+
+  .hero {
+    min-height: 430px;
+    padding: 22px;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
   }
 
   .header-sub {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
+  }
+
+  .input-card,
+  .affirmation-card,
+  .verse-content {
+    padding: 20px;
+  }
+
+  .input-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  #submitBtn,
+  .btn-back {
+    width: 100%;
   }
 
   textarea#userInput {
-    min-height: 110px;
-    font-size: 0.97rem;
-  }
-
-  .input-btn-row {
-    justify-content: stretch;
-  }
-
-  #submitBtn {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .affirmation-text {
-    font-size: 1.1rem;
-  }
-
-  .affirmation-card,
-  .verse-card {
-    padding: 18px 18px;
+    min-height: 140px;
   }
 }
 
-@media (max-width: 380px) {
-  .header h1 {
-    font-size: 1.4rem;
+@media (max-width: 390px) {
+  .brand-mark {
+    width: 38px;
+    height: 38px;
   }
 
-  textarea#userInput {
-    min-height: 100px;
+  .hero h1 {
+    font-size: 2.55rem;
+  }
+
+  .eyebrow,
+  .card-label {
+    font-size: 0.68rem;
   }
 }
